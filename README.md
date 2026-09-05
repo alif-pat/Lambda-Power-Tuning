@@ -1,24 +1,8 @@
 # Lambda-Power-Tuning
 How to determine Optimal LambdaMemory depending on Well Architected Pillar Priority
-# AWS Lambda Performance & Cost Tuning
+The project uses a Lambda function that performs CRUD operations against Amazon DynamoDB.
 
-## Overview
-
-This project explores how Lambda memory configuration affects
-performance and cost.
-
-Two complementary approaches were used:
-
-1. AWS Lambda Power Tuning
-   - Compared Lambda performance across different memory configurations
-   - Evaluated execution time and cost
-
-2. Postman Load Testing
-   - Validated end-to-end API performance under simulated load
-   - Measured throughput, latency, and errors
-
-## Architecture
-
+🏗️ Architecture
 Postman
    |
    v
@@ -30,37 +14,69 @@ AWS Lambda
    v
 DynamoDB
 
-## Experiment
+Lambda performance is then analyzed using AWS Lambda Power Tuning.
 
-The Lambda memory configuration was tuned using
-AWS Lambda Power Tuning.
+☁️ AWS Services Used
+AWS Lambda
+Amazon DynamoDB
+Amazon API Gateway
+AWS Step Functions
+AWS Lambda Power Tuning
+Amazon CloudWatch
+🔧 Lambda Operations
 
-The selected configuration was then validated using
-Postman performance testing.
+The Lambda function supports the following operations:
 
-## Postman Results
+Operation	DynamoDB Action
+create	PutItem
+read	GetItem
+update	UpdateItem
+delete	DeleteItem
+list	Scan
+echo	Return payload
+ping	Return pong
+🧪 Performance Experiment
 
-- Virtual Users: 10
-- Duration: 2 minutes
-- Total Requests: 2,682
-- Throughput: 22.33 requests/sec
-- Average Response Time: 320 ms
-- P90: 361 ms
-- P95: 396 ms
-- P99: 594 ms
-- Error Rate: 0%
+The same Lambda function is executed using different memory configurations.
 
-## Key Learning
+Example:
 
-Lambda memory is not simply a memory setting.
+128 MB
+256 MB
+512 MB
+1024 MB
+1536 MB
 
-Increasing memory also increases the compute capacity available
-to the function, which can reduce execution time. The optimal
-configuration therefore requires balancing:
+For each configuration, we compare:
 
-Performance + Cost
+Execution duration
+Cost
+Performance
 
-Rather than choosing the largest memory configuration,
-the goal is to find the point where additional compute
-no longer provides enough performance benefit to justify
-the additional cost.
+The objective is to identify the configuration that provides the best cost/performance balance.
+
+📊 Lambda Power Tuning
+
+AWS Lambda Power Tuning is used to run the Lambda function with different memory configurations and visualize the results.
+
+The experiment helps answer:
+
+What is the optimal Lambda memory configuration for this workload?
+
+📈 Results
+
+The performance results will be documented here after running the experiment.
+
+Memory	Duration	Cost	Observation
+128 MB	TBD	TBD	Baseline
+256 MB	TBD	TBD	TBD
+512 MB	TBD	TBD	TBD
+1024 MB	TBD	TBD	TBD
+1536 MB	TBD	TBD	TBD
+🧠 What I Learned
+
+This project demonstrates that increasing Lambda memory does not necessarily mean increasing the overall cost.
+
+Higher memory provides more CPU resources, which can reduce execution time. Therefore, the optimal configuration depends on the workload.
+
+For DynamoDB-based workloads, network and database latency can also influence the results.
