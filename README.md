@@ -2,7 +2,7 @@
 How to determine Optimal LambdaMemory depending on Well Architected Pillar Priority
 The project uses a Lambda function that performs CRUD operations against Amazon DynamoDB.
 
-🏗️ Architecture
+🏗️ **Architecture**
 Postman
    |
    v
@@ -16,7 +16,7 @@ DynamoDB
 
 Lambda performance is then analyzed using AWS Lambda Power Tuning.
 
-☁️ AWS Services Used
+☁️ **AWS Services Used**
 AWS Lambda
 Amazon DynamoDB
 Amazon API Gateway
@@ -35,7 +35,8 @@ delete	DeleteItem
 list	Scan
 echo	Return payload
 ping	Return pong
-🧪 Performance Experiment
+
+🧪 **Performance Experiment**
 
 The same Lambda function is executed using different memory configurations.
 
@@ -55,7 +56,7 @@ Performance
 
 The objective is to identify the configuration that provides the best cost/performance balance.
 
-📊 Lambda Power Tuning
+📊 **Lambda Power Tuning**
 
 AWS Lambda Power Tuning is used to run the Lambda function with different memory configurations and visualize the results.
 
@@ -63,7 +64,7 @@ The experiment helps answer:
 
 What is the optimal Lambda memory configuration for this workload?
 
-📈 Results
+📈 **Results**
 
 The performance results will be documented here after running the experiment.
 
